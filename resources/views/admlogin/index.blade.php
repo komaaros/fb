@@ -53,7 +53,7 @@
                                         <td class="name">{{$item->name}}</td>
                                         <td class="email">{{$item->email}}</td>
                                         <td class="city">{{$item->city}}</td>
-                                        <td class="country">{{$item->country}}</td>
+                                        <td data-value="{{$item->country_id}}" class="country">{{$item->countryName}}</td>
                                         <td class="date_of_birth">{{$item->date_of_birth}}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td class="actionsCell"><a href="#modalForm" class="modalEdit"><i aria-hidden="true" class="fa fa-pencil primary"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#modalDelete" class="modalDelete"><i aria-hidden="true" class="fa fa-trash text-danger"></i></a></td>
@@ -96,10 +96,20 @@
                                         <input type="password" class="form-control" id="password" name="password">
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="col-md-3 control-label" for="country">Country</label>
                                     <div class="col-md-6">
                                         <input type="text" class="form-control" id="country" name="country">
+                                    </div>
+                                </div> --}}
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="country">Country</label>
+                                    <div class="col-md-6">
+                                <select class="form-control mb-md" id="country" name="country">
+                                    <?php foreach($dataCountry as $item): ?>
+                                    <?php echo "<option value='".$item->id."'>".$item->name."</option>" ; ?>
+                                    <?php endforeach;?>
+                                </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

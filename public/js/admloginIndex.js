@@ -115,7 +115,7 @@
         var id = $(this).parent().siblings('.id').text();
         var name = $(this).parent().siblings('.name').text();
         var email = $(this).parent().siblings('.email').text();
-        var country = $(this).parent().siblings('.country').text();
+        var country = $(this).parent().siblings('.country').attr('data-value');
         var city = $(this).parent().siblings('.city').text();
         var date_of_birth = $(this).parent().siblings('.date_of_birth').text();
         $("#uid").val(id);

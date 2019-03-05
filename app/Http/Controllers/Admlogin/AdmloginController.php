@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admlogin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admlogin\User;
+use App\Models\User;
+use App\Models\Country;
+use App\Models\UserToCountry;
 use Illuminate\Http\Request;
 
 class AdmloginController extends Controller
 {
     private $AdmloginUserModel;
+    private $CountryModel;
     private $pageCustomJs;
     private $pageVendorJs;
     private $pageVendorCss;
@@ -16,6 +19,7 @@ class AdmloginController extends Controller
     public function __construct()
     {
         $this->AdmloginUserModel = new User;
+        $this->CountryModel = new Country;
         $this->pageCustomJs = [
             'js/admloginIndex.js',
         ];
@@ -31,13 +35,13 @@ class AdmloginController extends Controller
 
     public function index()
     {
-        $data = [];
-
         $data = $this->AdmloginUserModel->read();
+        $dataCountry = $this->CountryModel->read();
         return view('admlogin/index', ['data' => $data,
             'pageCustomJs' => $this->pageCustomJs,
             'pageVendorJs' => $this->pageVendorJs,
             'pageVendorCss' => $this->pageVendorCss,
+            'dataCountry' => $dataCountry
         ]);
     }
     public function create(Request $request)
